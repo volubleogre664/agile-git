@@ -15,7 +15,7 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: join(__dirname, "preload.js"),
-      nodeIntegration: false,
+      nodeIntegration: true,
       enableRemoteModule: true,
       contextIsolation: false,
     },

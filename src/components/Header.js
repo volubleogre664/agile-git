@@ -16,4 +16,4 @@ function Header() {
   );
 }
 
-moudule.exports = Header;
+module.exports = Header;

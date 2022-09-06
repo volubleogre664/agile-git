@@ -7,7 +7,3 @@ body {
     Arial, sans-serif;
   box-sizing: border-box;
 }
-
-@import url("./App.css");
-@import url("./pages/CreateRepo.css");
-@import url("./pages/Repo.css");
