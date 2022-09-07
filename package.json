@@ -17,7 +17,7 @@
   "keywords": [],
   "author": {
     "name": "Nduduzo Shabalala",
-    "email": "ndshabal021@student.wethinkcode.co.za"
+    "email": "ndushabal@gmail.com"
   },
   "license": "MIT",
   "config": {
@@ -50,6 +50,7 @@
   "dependencies": {
     "@babel/cli": "^7.0.0-beta.44",
     "@babel/core": "^7.0.0-beta.41",
+    "@reduxjs/toolkit": "^1.8.5",
     "babel-preset-react-app": "^3.1.2",
     "electron-squirrel-startup": "^1.0.0"
   },

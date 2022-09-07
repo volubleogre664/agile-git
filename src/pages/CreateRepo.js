@@ -2,6 +2,7 @@
 
 const { ipcRenderer } = require("electron");
 const useForm = require("../utils/useForm");
+const useUtils = require("../utils/useSlice").useUtils;
 
 function CreateRepo({ tabClicked }) {
   const { onChange, onSubmit, values } = useForm(submitForm, {
@@ -10,8 +11,10 @@ function CreateRepo({ tabClicked }) {
     boilerplate: "none",
     gitignore: "none",
     repoPath: "",
-    reaadme: "none",
+    readme: "none",
   });
+
+  const [{ loadRepo }] = useUtils();
 
   const gitInitClicked = (e) => {
     e.preventDefault();
@@ -53,6 +56,10 @@ function CreateRepo({ tabClicked }) {
 
       <main className="demo__main">
         <form onSubmit={onSubmit} className="demo__mainForm">
+          <div className="demo__mainFormControl">
+            {loadRepo && <h1>{loadRepo}</h1>}
+          </div>
+
           <div className="demo__mainFormControl">
             <label htmlFor="repoName">Name of your repo</label>
             <input
