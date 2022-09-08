@@ -1,0 +1,31 @@
+.homeOptionBtn {
+  width: 100%;
+  max-width: 30rem;
+  padding: 1.5rem 2rem;
+  display: flex;
+  cursor: pointer;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.6rem;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 1rem;
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  box-shadow: var(--tertiary-color) 0px 48px 100px 0px;
+}
+
+.homeOptionBtn span {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+
+.homeOptionBtn i {
+  font-size: 2rem;
+}
+
+.homeOptionBtn:hover {
+  font-weight: 500;
+  transition: all ease-in-out 0.25s;
+  background-color: var(--secondary-color);
+}

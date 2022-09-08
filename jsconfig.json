@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./bundled/",
+    "paths": {
+      "@pages/": ["./src/pages*"],
+      "@components": ["./src/components*"],
+      "@styles": ["./src/styles*"],
+      "@utils": ["./src/utils*"],
+      "@hooks": ["./src/hooks*"],
+      "@context": ["./src/context*"]
+    }
+  }
+}

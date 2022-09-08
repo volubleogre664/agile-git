@@ -1,45 +1,16 @@
 "use strict";
-const useForm = require("../utils/useForm");
+const {
+  useForm,
+  useSlice: { useUtils },
+} = require("../hooks");
+const { UTILS } = require("../context/types");
 
-const NewEmptyRepo = ({ formHandler }) => {
-  const { onChange, values } = formHandler;
-  return (
-    <div className="emptyRepo">
-      <h1>Make an empty repo</h1>
-      {/* Create repo page does this */}
+const CreateNewEmptyRepo = require("./CreateNewEmptyRepo");
+const LoadLocalRepo = require("./LoadLocalRepo");
+const LoadRemoteRepo = require("./LoadRemoteRepo");
 
-      {/* Needs styling and proper design */}
-    </div>
-  );
-};
-
-const LoadLocalRepo = ({ formHandler }) => {
-  return (
-    <div className="localRepo">
-      <h1>Load a local repo</h1>
-
-      {/* Should a choose path section */}
-
-      {/* Drag and drop section to add the folder of repo  */}
-
-      {/* Validate if folder contains a .git folder for it to be a valid repo */}
-    </div>
-  );
-};
-
-const LoadRemoteRepo = ({ formHandler }) => {
-  return (
-    <div className="remoteRepo">
-      <h1>Load a remote repo</h1>
-
-      {/* Input for username/repoName or url then fire ahead */}
-
-      {/* Path to save the repo */}
-    </div>
-  );
-};
-
-function CreateNewRepo({ repoType }) {
+function CreateNewRepo({ repoType, setRepoType }) {
+  const [, dispatchUtils] = useUtils();
   const [pageData, setPageData] = React.useState({ title: "", btn: "" });
   const formHandler = useForm(null, {
     repoName: "",
@@ -54,7 +25,7 @@ function CreateNewRepo({ repoType }) {
   function loadRepoType(_type) {
     switch (_type) {
       case "empty": {
-        return <NewEmptyRepo formHandler={formHandler} />;
+        return <CreateNewEmptyRepo formHandler={formHandler} />;
       }
 
       case "local": {
@@ -70,6 +41,12 @@ function CreateNewRepo({ repoType }) {
       }
     }
   }
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setRepoType("");
+    dispatchUtils({ type: UTILS.OVERLAY.SET, payload: false });
+  };
 
   React.useEffect(() => {
     switch (repoType) {
@@ -116,7 +93,7 @@ function CreateNewRepo({ repoType }) {
       <header className="newRepo__header">
         <h1>{pageData.title}</h1>
 
-        <button>
+        <button onClick={handleCancel}>
           <i className="fas fa-times"></i>
         </button>
       </header>
@@ -125,7 +102,7 @@ function CreateNewRepo({ repoType }) {
 
       <footer className="newRepo__footer">
         <button>{pageData.btn}</button>
-        <button>Cancel</button>
+        <button onClick={handleCancel}>Cancel</button>
       </footer>
     </div>
   );

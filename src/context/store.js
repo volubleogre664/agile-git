@@ -5,4 +5,5 @@ module.exports = configureStore({
   reducer: {
     utils: utils.reducer,
   },
+  devTools: false,
 });

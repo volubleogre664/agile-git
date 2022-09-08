@@ -1,6 +1,6 @@
 const { app, BrowserWindow, dialog, ipcMain } = require("electron");
 const { join } = require("path");
-const runTerminal = require("./utils/runTerminal");
+const runTerminal = require("./utils/main/runTerminal");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -11,8 +11,8 @@ if (require("electron-squirrel-startup")) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 970,
+    height: 670,
     webPreferences: {
       preload: join(__dirname, "preload.js"),
       nodeIntegration: true,
